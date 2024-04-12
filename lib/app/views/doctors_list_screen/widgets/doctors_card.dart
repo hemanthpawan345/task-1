@@ -29,9 +29,9 @@ Widget doctorCard() {
             margin: const EdgeInsets.all(12),
             width: 85,
             height: 85,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 235, 255, 253),
-              borderRadius: BorderRadius.circular(6),
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 235, 255, 253),
+              borderRadius: BorderRadius.all(Radius.circular(6)),
             ),
 
             //placeholder for the docter image
@@ -41,7 +41,6 @@ Widget doctorCard() {
           Container(
             margin: const EdgeInsets.fromLTRB(0, 12, 12, 10),
             padding: const EdgeInsets.all(4),
-            width: 180,
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -58,29 +57,33 @@ Widget doctorCard() {
                     Text("Specialist"),
                     SizedBox(height: 10),
                     Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
+                      children: <Widget>[
+                        Icon(Icons.star, color: Colors.yellow),
+                        Text(
+                          '4.7(323)',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
                         ),
                         SizedBox(width: 4),
-                        Text("4.7 (87 reviews)"),
+                        Icon(
+                          Icons.watch_later_outlined,
+                          color: Colors.grey,
+                          size: 16,
+                        ),
+                        Text(
+                          '09:00AM - 02:00PM',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        )
                       ],
                     ),
                   ],
                 ),
               ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(12, 16, 12, 0),
-            child: GestureDetector(
-              child: const Icon(
-                Icons.favorite_border_outlined,
-                color: Colors.red,
-              ),
-              // change the icon after adding to wishlist
-              onTap: () {},
             ),
           ),
         ],

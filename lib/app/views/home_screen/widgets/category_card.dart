@@ -37,10 +37,18 @@ Widget categoryCard() {
           ),
 
           //change the name according to the category
-          const Text("Dentist"),
+          const Text("Dentist",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
 
           //change the count according to the category
-          const Text("4 Doctors"),
+          const Text("4 Doctors",
+            style: TextStyle(
+              fontSize: 12,
+            ),
+          ),
         ],
       ),
     ),

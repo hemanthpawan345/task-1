@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../doctor_details_screen/view.dart';
+import '../doctors_list_screen/view.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,9 +15,28 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: const Color.fromARGB(255, 240, 240, 240),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 240, 240, 240),
-        title: const Text('Home'),
+        title: const Text(
+          'Home',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
         leading: const Icon(Icons.menu),
         centerTitle: true,
+        actions: [
+          // for profile pic view
+          Container(
+            margin: const EdgeInsets.only(right: 16),
+            width: 40,
+            height: 40,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 209, 243, 249),
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+            // child: (),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -48,23 +68,50 @@ class HomeScreen extends StatelessWidget {
                         children: <Widget>[
                           const Padding(
                             padding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                            child: Text("BRAIN SURGEON"),
+                            child: Text(
+                              "BRAIN SURGEON",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                           const Padding(
                             padding: EdgeInsets.fromLTRB(12, 12, 0, 0),
-                            child: Text("Dr. Ursula Gurnmeister"),
+                            child: Text(
+                              "Dr. Ursula Gurnmeister",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
                           const Padding(
                             padding: EdgeInsets.fromLTRB(12, 6, 0, 0),
-                            child: Text("Health Hospital"),
+                            child: Text(
+                              "Health Hospital",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(12, 10, 0, 0),
-                            child: ElevatedButton(
+                            child: TextButton(
                               onPressed: () {
                                 Get.to(() => const DoctorDetailsScreen());
                               },
-                              child: const Text("GET APPOINTMENT"),
+                              style: TextButton.styleFrom(
+                                backgroundColor:
+                                    const Color.fromARGB(255, 64, 178, 191),
+                              ),
+                              child: const Text(
+                                "GET APPOINTMENT",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -72,7 +119,7 @@ class HomeScreen extends StatelessWidget {
 
                       //place holder for the image of the doctor
                       Container(
-                        margin: const EdgeInsets.fromLTRB(45, 15, 0, 0),
+                        margin: const EdgeInsets.fromLTRB(60, 15, 0, 0),
                         height: 145,
                         width: 110,
                         decoration: BoxDecoration(
@@ -84,9 +131,15 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10),
-                const Text("CATEGORIES"),
-                const SizedBox(height: 16),
+                const SizedBox(height: 15),
+                const Text(
+                  "CATEGORIES",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(height: 15),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
 
@@ -101,25 +154,27 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    const Text("POPULAR DOCTORS"),
+                    const Text(
+                      "POPULAR DOCTORS",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                     TextButton(
                       onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return Container();
-                          },
-                        );
+                        Get.to(() => const DoctorsListScreen());
                       },
-                      child: const Text("see all"),
+                      child: const Text(
+                        "See All",
+                        style: TextStyle(color: Colors.black),
+                      ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 16),
                 doctorCard(),
                 doctorCard(),
                 doctorCard(),
@@ -127,30 +182,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color.fromARGB(255, 65, 206, 223),
-        currentIndex: 0,
-        unselectedItemColor: const Color.fromARGB(255, 150, 158, 157),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_sharp),
-            label: "",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: "",
-          ),
-        ],
       ),
     );
   }
